@@ -10,10 +10,9 @@ const mongoose = require("mongoose");
 
 const app = express();
 
-const PORT = 3000;
-
 dotenv.config();
 
+console.log("PORT :::", process.env.PORT);
 console.log("Mongo db URI :::", process.env.MONGO_URI);
 
 app.use(cors());
@@ -40,6 +39,6 @@ mongoose
     console.log("Mongo DB Error :", error);
   });
 
-app.listen(PORT, () => {
-  console.log("Server is runnin g on :", PORT);
+app.listen(process.env.PORT, () => {
+  console.log("Server is runnin g on :", process.env.PORT);
 });
