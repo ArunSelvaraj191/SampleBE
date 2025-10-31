@@ -13,7 +13,7 @@ const app = express();
 dotenv.config();
 
 const PORT = process.env.PORT || 5000;
-const MONGODBURI = MONGODBURI || "";
+const MONGODBURI = process.env.MONGO_URI || "";
 
 console.log("PORT :::", PORT);
 console.log("Mongo db URI :::", MONGODBURI);
