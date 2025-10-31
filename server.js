@@ -12,8 +12,11 @@ const app = express();
 
 dotenv.config();
 
-console.log("PORT :::", process.env.PORT);
-console.log("Mongo db URI :::", process.env.MONGO_URI);
+const PORT = process.env.PORT || 5000;
+const MONGODBURI = MONGODBURI || "";
+
+console.log("PORT :::", PORT);
+console.log("Mongo db URI :::", MONGODBURI);
 
 app.use(cors());
 app.use(express.json());
@@ -31,7 +34,7 @@ app.use("/api/auth", authRouter);
 // });
 
 mongoose
-  .connect(process.env.MONGO_URI)
+  .connect(MONGODBURI)
   .then(() => {
     console.log("Mongo DB Connected Sucessfully!");
   })
@@ -39,6 +42,6 @@ mongoose
     console.log("Mongo DB Error :", error);
   });
 
-app.listen(process.env.PORT, () => {
-  console.log("Server is runnin g on :", process.env.PORT);
+app.listen(PORT, () => {
+  console.log("Server is runnin g on :", PORT);
 });
